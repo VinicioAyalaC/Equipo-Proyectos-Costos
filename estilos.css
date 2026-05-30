@@ -1,0 +1,345 @@
+/* ============================================================
+   HOJA DE ESTILOS - Sistema de Costeo (Grupo Ramones)
+   ============================================================
+   Aquí va TODA la apariencia: colores, tamaños, posiciones.
+   El HTML define QUÉ hay; este archivo define CÓMO se ve.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   VARIABLES DE COLOR
+   Definir los colores una sola vez aquí permite cambiarlos
+   en todo el proyecto modificando un solo lugar.
+   Usamos el morado de MOVILIS como color principal.
+   ------------------------------------------------------------ */
+:root {
+  --color-principal: #6b1f7c;      /* morado MOVILIS */
+  --color-principal-claro: #f3e8f6;/* morado muy suave para fondos */
+  --color-texto: #2c2c2a;          /* casi negro, para leer cómodo */
+  --color-texto-suave: #6f6f6f;    /* gris para textos secundarios */
+  --color-fondo: #faf7fb;          /* fondo general claro */
+  --color-blanco: #ffffff;
+
+  /* Colores para la caja de "Error común" (tono de alerta) */
+  --alerta-fondo: #fff4e5;
+  --alerta-borde: #e08a1e;
+  --alerta-texto: #8a4f06;
+
+  /* Colores para corregir el test */
+  --correcto-fondo: #e6f4ea;
+  --correcto-borde: #2e7d32;
+  --incorrecto-fondo: #fdecea;
+  --incorrecto-borde: #c62828;
+}
+
+
+/* ------------------------------------------------------------
+   ESTILOS GENERALES
+   ------------------------------------------------------------ */
+* {
+  box-sizing: border-box;   /* el padding no agranda los elementos */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Cada pantalla se centra y no se hace demasiado ancha,
+   para que se lea bien en pantallas grandes. */
+section {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--color-blanco);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ============================================================
+   NOTA TÉCNICA CLAVE: LA CLASE .oculto
+   ============================================================
+   Esta es la clase que controla qué pantalla se ve.
+   "display: none" hace que el elemento desaparezca POR COMPLETO:
+   no ocupa espacio ni se ve. Es como si no existiera en la página.
+
+   El JavaScript simplemente AGREGA o QUITA esta clase a cada
+   pantalla para intercambiarlas. Así de limpio:
+     - Quitar .oculto  -> la pantalla aparece
+     - Poner  .oculto  -> la pantalla se esconde
+   ============================================================ */
+.oculto {
+  display: none;
+}
+
+
+/* ------------------------------------------------------------
+   PANTALLA 1: PORTADA
+   ------------------------------------------------------------ */
+.portada-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  height: 100px;        /* alto fijo; el ancho se ajusta solo */
+  width: auto;
+  object-fit: contain;
+   border-radius: 10px;
+}
+
+.portada-contenido {
+  text-align: center;
+}
+
+.instituto {
+  color: var(--color-texto-suave);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.portada-contenido h1 {
+  color: var(--color-principal);
+  font-size: 36px;
+  margin-bottom: 6px;
+}
+
+.tema {
+  font-size: 20px;
+  color: var(--color-texto-suave);
+  margin-bottom: 28px;
+}
+
+.datos-academicos,
+.integrantes {
+  background-color: var(--color-principal-claro);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.datos-academicos p {
+  margin-bottom: 4px;
+}
+
+.integrantes .etiqueta {
+  color: var(--color-principal);
+  font-weight: bold;          /*convierte a negritas*/
+  text-transform: uppercase;  /*convierte a mayusculas*/
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+
+/* ------------------------------------------------------------
+   BOTONES (reutilizados en todas las pantallas)
+   ------------------------------------------------------------ */
+.boton-principal {
+  background-color: var(--color-principal);
+  color: var(--color-blanco);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: opacity 0.2s;
+}
+
+.boton-principal:hover {
+  opacity: 0.9;
+}
+
+/* Cuando un botón está DESHABILITADO (atributo "disabled"),
+   se ve apagado y el cursor muestra que no se puede pulsar.
+   Así el usuario entiende que está bloqueado. */
+.boton-principal:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.boton-secundario {
+  background-color: var(--color-blanco);
+  color: var(--color-principal);
+  border: 1px solid var(--color-principal);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.boton-secundario:hover {
+  background-color: var(--color-principal-claro);
+}
+
+.boton-secundario:disabled {
+  color: #bbbbbb;
+  border-color: #dddddd;
+  cursor: not-allowed;
+}
+
+
+/* ------------------------------------------------------------
+   BARRA SUPERIOR (en aprendizaje y test)
+   ------------------------------------------------------------ */
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color-principal-claro);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.titulo-seccion {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-principal);
+}
+
+.contador {
+  background-color: var(--color-principal-claro);
+  color: var(--color-principal);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+/* ------------------------------------------------------------
+   PANTALLA 2: CARTILLAS DE APRENDIZAJE
+   ------------------------------------------------------------ */
+#contenedor-cartilla h2 {
+  color: var(--color-principal);
+  margin-bottom: 12px;
+}
+
+.cartilla-bloque {
+  margin-bottom: 16px;
+}
+
+.cartilla-bloque .subtitulo {
+  font-weight: bold;
+  color: var(--color-texto);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cartilla-formula {
+  background-color: #f4f4f4;
+  border-left: 4px solid var(--color-principal);
+  padding: 10px 14px;
+  font-family: 'Consolas', monospace;
+  border-radius: 0 6px 6px 0;
+  margin-top: 6px;
+}
+
+
+/* ============================================================
+   NOTA TÉCNICA CLAVE: CAJA DE "ERROR COMÚN"
+   ============================================================
+   Esta caja resalta el error común de cada concepto.
+   Usa colores de alerta (tonos naranja/ámbar) y una franja
+   de color a la izquierda para que el ojo la note enseguida,
+   diferenciándola del texto normal.
+   ============================================================ */
+.caja-error {
+  background-color: var(--alerta-fondo);
+  border-left: 5px solid var(--alerta-borde);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 16px;
+  margin-top: 20px;
+}
+
+.caja-error .titulo-error {
+  color: var(--alerta-texto);
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.caja-error p {
+  color: var(--alerta-texto);
+  font-size: 14px;
+}
+
+
+.navegacion-cartillas {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+
+/* ------------------------------------------------------------
+   PANTALLA 3: TEST
+   ------------------------------------------------------------ */
+.pregunta {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.pregunta .enunciado {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Cada opción de respuesta es una etiqueta clickeable */
+.opcion {
+  display: block;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.opcion:hover {
+  background-color: var(--color-principal-claro);
+}
+
+.opcion input {
+  margin-right: 10px;
+}
+
+/* Clases que el JavaScript agrega al corregir,
+   para pintar la opción de verde (acierto) o rojo (fallo). */
+.opcion.correcta {
+  background-color: var(--correcto-fondo);
+  border-color: var(--correcto-borde);
+}
+
+.opcion.incorrecta {
+  background-color: var(--incorrecto-fondo);
+  border-color: var(--incorrecto-borde);
+}
+
+
+/* Caja del resultado final (la nota) */
+#resultado-test {
+  text-align: center;
+  background-color: var(--color-principal-claro);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+#resultado-test .nota {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--color-principal);
+}

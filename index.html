@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+      <meta charset="UTF-8">       
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sistema de Costeo - Grupo Ramones</title>
+      <link rel="stylesheet" href="estilos.css">
+</head>
+
+
+<body>
+<!--============================================================
+PANTALLA 1: PORTADA
+El botón "Comenzar" empieza DESHABILITADO.
+============================================================ -->
+  <section id="pantalla-portada">
+        <header class="portada-header">        <!-- Espacios para los dos logos. -->
+              <img src="logo-movilis.png" alt="Logo MOVILIS" class="logo">
+              <img src="Ramones_logo.jpg" alt="Logo del grupo Ramones" class="logo">
+        </header>
+
+        <main class="portada-contenido">
+              <p class="instituto">Tecnología Superior en Desarrollo de Software y Programación</p>
+              <h1>Sistema de Costeo</h1>
+              <p class="tema">Tema: Costos y Presupuesto</p>
+
+              <div class="datos-academicos">
+                    <p>   <strong>Materia: </strong> Matemática 1</p>
+                    <p>   <strong>Periodo: </strong> 2026-2 R</p>
+                    <p>   <strong>Paralelo:</strong> A </p>
+                    <p>   <strong>Grupo:   </strong> Ramones</p>
+              </div>
+
+              <div class="integrantes">
+                    <p class="etiqueta">Integrantes:</p>
+                    <p>Edwin M. Arellano</p>
+                    <p>Vinicio H. Ayala</p>
+              </div>
+
+              <!-- Botón que sirve para entrar a estudiar. -->
+              <button id="btn-ir-aprendizaje" class="boton-principal">
+                Comenzar a estudiar
+              </button>
+        </main>
+  </section>  <!--Fin pantalla 1-->
+
+  
+
+<!-- ============================================================
+  PANTALLA 2: APRENDIZAJE (las 8 cartillas)
+  Empieza OCULTA. Se muestra al pulsar "Comenzar a estudiar".
+  ============================================================ -->
+  <section id="pantalla-aprendizaje"   class="oculto">
+        <header class="barra-superior">
+            <span class="titulo-seccion">Conceptos de Costeo</span>
+            <!-- Contador de progreso: "Concepto 1 de 8" -->
+            <span id="contador-cartilla"   class="contador">1 de 8</span>
+        </header>
+
+        <main>
+              <!-- AQUÍ se inyecta con JavaScript la cartilla actual. El JS escribe dentro de este contenedor el concepto
+                  que toca mostrar (título, descripción, error común, etc.) -->
+              <div id="contenedor-cartilla"></div>
+
+              <!-- Botones para moverse entre las 8 cartillas -->
+              <div class="navegacion-cartillas">
+                  <button id="btn-cartilla-anterior" class="boton-secundario">Anterior</button>
+                  <button id="btn-cartilla-siguiente" class="boton-secundario">Siguiente</button>
+              </div>
+
+              <!-- BOTÓN DEL TEST: empieza DESHABILITADO (atributo "disabled").
+                  Se activa cuando el usuario llega a la cartilla número 8. -->
+              <button id="btn-ir-test" class="boton-principal" disabled>
+                Comenzar test (bloqueado)
+              </button>
+        </main>
+  </section>
+
+
+
+
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
