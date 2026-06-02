@@ -1,4 +1,18 @@
 /* ============================================================
+    LÓGICA DEL SISTEMA DE COSTEO - script.js (Grupo Ramones)
+============================================================
+    Este archivo hace TRES cosas:
+    1. Guarda los datos (8 conceptos y 5 preguntas) en arreglos.
+    2. Inyecta ese contenido en el HTML (contenido dinámico).
+    3. Controla el flujo: cambiar de pantalla, navegar cartillas,
+        desbloquear y calificar el test.
+
+    La técnica clave del proyecto es la INYECCIÓN DINÁMICA:  las cartillas y preguntas no están escritas en el HTML,
+    sino aquí en datos, y JavaScript las dibuja en pantalla.
+   ============================================================ */
+
+
+/* ============================================================
     PARTE 1: LOS DATOS  CONCEPTOS
    ============================================================ */
 
@@ -62,8 +76,42 @@ const CONCEPTOS = [
 ];
 
 
-
-
+/*/* ============================================================ 
+Las 5 preguntas del test
+   Cada pregunta tiene su enunciado, sus opciones y el número
+   de la opción correcta (empezando a contar desde 0).
+   Las respuestas correctas están repartidas (no todas iguales). */
+const PREGUNTAS = [
+  {
+    enunciado: "Si el arriendo del local de pizzas cuesta $300 al mes, ¿qué tipo de costo es?",
+    opciones: ["Costo Variable", "Costo Directo", "Costo Indirecto / Fijo"],
+    correcta: 2   // la tercera opción (índice 2)
+  },
+  
+  {
+    enunciado: "Si compras un saco de harina en kilos pero tu receta usa gramos, ¿qué debe hacer el sistema antes de calcular?",
+    opciones: ["Homologar las unidades (convertir kilos a gramos)", "Multiplicar los kilos por los gramos", "Ignorar los gramos y aproximar al ojo"],
+    correcta: 0   // la primera opción (índice 0)
+  },
+  
+  {
+    enunciado: "El cocinero tarda 20 minutos en una olla de salsa que rinde para 10 pizzas. ¿Cómo se asigna ese costo?",
+    opciones: ["Cobrar los 20 minutos enteros a la primera pizza", "Dividir el costo de esos 20 minutos entre las 10 pizzas", "No cobrar la mano de obra porque la salsa es un extra"],
+    correcta: 1   // la segunda opción (índice 1)
+  },
+  
+  {
+    enunciado: "Si un plato cuesta $2.00 y se quiere ganar 50%, ¿cómo opera el JavaScript el porcentaje?",
+    opciones: ["Multiplicar el costo por 50 (2.00 * 50)", "Sumarle 50 dólares al costo", "Dividir el porcentaje para 100 (50/100) y multiplicarlo por el costo"],
+    correcta: 2   // la tercera opción (índice 2)
+  },
+  
+  {
+    enunciado: "¿Qué representa el Punto de Equilibrio para el dueño?",
+    opciones: ["La cantidad mínima de platos para cubrir gastos, quedando en cero", "El momento en que el negocio duplica ganancias", "El precio más alto al que puede vender una pizza"],
+    correcta: 0   // la primera opción (índice 0)
+  }
+];
 
 
 /* ============================================================
@@ -291,34 +339,29 @@ btnIrAprendizaje.addEventListener("click", function () { // boton comenzar a est
 
 // Botón "Anterior" de las cartillas
 btnCartillaAnterior.addEventListener("click", function () {
-                                                if (cartillaActual > 0) {
-                                                    cartillaActual--;
-                                                    dibujarCartilla();
-                                            }
-                                        }
-);
+  if (cartillaActual > 0) {
+    cartillaActual--;
+    dibujarCartilla();
+  }
+});
 
 
 
 // Botón "Siguiente" de las cartillas
 btnCartillaSiguiente.addEventListener("click", function () {
-                                                if (cartillaActual < CONCEPTOS.length - 1) {
-                                                    cartillaActual++;
-                                                    dibujarCartilla();
-                                                }
-                                        }
-);
+  if (cartillaActual < CONCEPTOS.length - 1) {
+    cartillaActual++;
+    dibujarCartilla();
+  }
+});
 
 
 
 // Aprendizaje -> Test
 btnIrTest.addEventListener("click", function () {
-                                                mostrarPantalla(pantallaTest);
-                                                dibujarPreguntas();   // inyectamos las preguntas al entrar al test
-                                                }
-);
-
-
+  mostrarPantalla(pantallaTest);
+  dibujarPreguntas();   // inyectamos las preguntas al entrar al test
+});
 
 // Botón para calificar
 btnCalificar.addEventListener("click", calificarTest);

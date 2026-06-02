@@ -46,9 +46,8 @@ El botón "Comenzar" empieza DESHABILITADO.
         </main>
   </section>  <!--Fin pantalla 1-->
 
-  
 
-<!-- ============================================================
+  <!-- ============================================================
   PANTALLA 2: APRENDIZAJE (las 8 cartillas)
   Empieza OCULTA. Se muestra al pulsar "Comenzar a estudiar".
   ============================================================ -->
@@ -79,9 +78,36 @@ El botón "Comenzar" empieza DESHABILITADO.
   </section>
 
 
+  <!-- ============================================================
+PANTALLA 3: TEST (las 5 preguntas)
+Empieza OCULTA. Se muestra al pulsar el botón del test.
+============================================================ -->
+  <section id="pantalla-test" class="oculto">
+      <header class="barra-superior">
+          <span class="titulo-seccion">Test de Conocimientos</span>
+      </header>
 
+      <main>
+        <!--las 5 preguntas se inyectan aquí con JavaScript 
+        (desde el arreglo de datos en script.js).  Por eso es "dinámico". 
+        
+        La etiqueta <form> es un contenedor fundamental que define una sección de un documento destinada 
+        a recopilar información del usuario y enviarla a un servidor web para su procesamiento. Es
+        la base para formularios de contacto, registros, búsquedas y encuestas, agrupando controles
+        interactivos como campos de texto, casillas y botones.    -->
 
+        <form id="formulario-test">
+              <div id="contenedor-preguntas-dinamicas"></div>
+              <!-- Botón para calificar.  -->
+              <button type="button" id="btn-calificar" class="boton-principal">
+                  Ver mi nota
+              </button>
+        </form>
 
+        <!-- Aquí el JS escribe el resultado final (ej: "4 de 5 correctas") -->
+        <div id="resultado-test" class="oculto"></div>
+      </main>
+  </section>
   
   <script src="script.js"></script>
 </body>
