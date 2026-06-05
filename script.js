@@ -364,11 +364,6 @@ btnIrTest.addEventListener("click", function () {
 }
 );
 
-
-
-// Botón para calificar
-btnCalificar.addEventListener("click", calificarTest);
-
 // Botón para reiniciar todo y volver a la portada
 btnReiniciar.addEventListener("click", function () {
   cartillaActual = 0; // Regresamos a la primera cartilla
@@ -376,4 +371,8 @@ btnReiniciar.addEventListener("click", function () {
   btnReiniciar.classList.add("oculto"); // Escondemos este mismo botón para el próximo intento
   mostrarPantalla(pantallaPortada); // Nos lleva a la pantalla inicial
 });
+
+
+// Botón para calificar
+btnCalificar.addEventListener("click", calificarTest);
 
