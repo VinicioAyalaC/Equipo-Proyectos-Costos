@@ -125,6 +125,7 @@ const btnCartillaAnterior = document.getElementById("btn-cartilla-anterior");
 const btnCartillaSiguiente = document.getElementById("btn-cartilla-siguiente");
 const btnIrTest = document.getElementById("btn-ir-test");
 const btnCalificar = document.getElementById("btn-calificar");
+const btnReiniciar = document.getElementById("btn-reiniciar"); // <--- NUEVA LÍNEA
 
 const contenedorCartilla = document.getElementById("contenedor-cartilla");
 const contadorCartilla = document.getElementById("contador-cartilla");
@@ -310,6 +311,7 @@ function calificarTest() {
     <p class="nota">${aciertos} / ${PREGUNTAS.length}</p>
     <p>respuestas correctas</p>
   `;
+  btnReiniciar.classList.remove("oculto"); // <--- NUEVA LÍNEA: Muestra el botón de volver
 
   // Llevamos la vista hasta el resultado para que se vea
   resultadoTest.scrollIntoView({ behavior: "smooth" });
@@ -366,3 +368,12 @@ btnIrTest.addEventListener("click", function () {
 
 // Botón para calificar
 btnCalificar.addEventListener("click", calificarTest);
+
+// Botón para reiniciar todo y volver a la portada
+btnReiniciar.addEventListener("click", function () {
+  cartillaActual = 0; // Regresamos a la primera cartilla
+  resultadoTest.classList.add("oculto"); // Escondemos la caja de nota anterior
+  btnReiniciar.classList.add("oculto"); // Escondemos este mismo botón para el próximo intento
+  mostrarPantalla(pantallaPortada); // Nos lleva a la pantalla inicial
+});
+
