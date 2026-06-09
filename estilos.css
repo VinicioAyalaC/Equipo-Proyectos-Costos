@@ -13,12 +13,14 @@
    Usamos el morado de MOVILIS como color principal.
    ------------------------------------------------------------ */
 :root {
-  --color-principal: #6b1f7c;      /* morado MOVILIS */
-  --color-principal-claro: #f3e8f6;/* morado muy suave para fondos */
-  --color-texto: #2c2c2a;          /* casi negro, para leer cómodo */
-  --color-texto-suave: #6f6f6f;    /* gris para textos secundarios */
-  --color-fondo: #faf7fb;          /* fondo general claro */
-  --color-blanco: #ffffff;
+   --color-principal:       #6b1f7c;   /* morado MOVILIS – color base del proyecto */
+  --color-principal-claro: #f3e8f6;   /* morado muy suave para fondos de tarjetas */
+  --color-acento:          #9c27b0;   /* morado más brillante para highlights */
+  --color-texto:           #2c2c2a;   /* casi negro, para que el texto sea fácil de leer */
+  --color-texto-suave:     #6f6f6f;   /* gris para textos secundarios o de apoyo */
+  --color-fondo:           #faf7fb;   /* fondo general de la página */
+  --color-blanco:          #ffffff;   /* blanco puro */
+  --color-borde:           #e0d5e8;   /* borde suave con tono morado */
 
   /* Colores para la caja de "Error común" (tono de alerta) */
   --alerta-fondo: #fff4e5;
@@ -30,6 +32,11 @@
   --correcto-borde: #2e7d32;
   --incorrecto-fondo: #fdecea;
   --incorrecto-borde: #c62828;
+
+  /* Colores para las cajas de resultado */
+  --resultado-fondo:       #eef7f1;   /* verde muy suave */
+  --resultado-borde:       #27ae60;   /* verde para indicar resultado exitoso */
+  --resultado-texto:       #1a6e3d;   /* verde oscuro para el texto */
 }
 
 
@@ -158,6 +165,8 @@ section {
 
 .boton-principal:hover {
   opacity: 0.9;
+  background-color: var(--color-acento);  /* morado más brillante */
+  transform: translateY(-1px);            /* sube un poquito para dar sensación de profundidad */
 }
 
 /* Cuando un botón está DESHABILITADO (atributo "disabled"),
@@ -342,4 +351,228 @@ section {
   font-size: 40px;
   font-weight: bold;
   color: var(--color-principal);
+}
+
+
+
+/* ------------------------------------------------------------
+   SECCIÓN G: FORMULARIOS Y CAMPOS
+   Edwin: aquí defines cómo se ven los campos de entrada.
+   ------------------------------------------------------------ */
+ 
+/* Contenedor de cada campo de formulario */
+.bloque-formulario {
+  margin-bottom: 20px;
+}
+ 
+/* Etiqueta (texto descriptivo encima del campo) */
+.etiqueta-campo {
+  display: block;              /* ocupa toda la línea, no se queda al lado del campo */
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-principal);
+  margin-bottom: 8px;
+}
+ 
+/* Menú desplegable <select> */
+.campo-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--color-borde);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--color-texto);
+  background-color: var(--color-blanco);
+  cursor: pointer;
+  outline: none;               /* elimina el contorno azul por defecto del navegador */
+  transition: border-color 0.2s;
+}
+ 
+/* Cuando el usuario hace clic en el select (focus) */
+.campo-select:focus {
+  border-color: var(--color-principal);  /* borde morado al estar activo */
+}
+ 
+/* Campo numérico <input type="number"> */
+.campo-numero {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--color-borde);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--color-texto);
+  background-color: var(--color-blanco);
+  outline: none;
+  transition: border-color 0.2s;
+}
+ 
+/* Cuando el campo numérico está activo */
+.campo-numero:focus {
+  border-color: var(--color-principal);
+}
+ 
+ 
+/* ------------------------------------------------------------
+   SECCIÓN H: TARJETAS DE INGREDIENTES
+   Edwin: cada ingrediente se muestra como una tarjeta.
+   El JavaScript genera estas tarjetas con un bucle FOR.
+   ------------------------------------------------------------ */
+ 
+/* Subtítulo de cada paso (Paso 2, Paso 3, Paso 4) */
+.subtitulo-paso {
+  color: var(--color-principal);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--color-principal-claro);
+}
+ 
+/* Cuadrícula que organiza las tarjetas de ingredientes.
+   auto-fill: mete tantas columnas como quepan.
+   minmax(180px, 1fr): cada columna tiene entre 180px y el espacio disponible. */
+.cuadricula-ingredientes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;                   /* espacio entre tarjetas */
+  margin-bottom: 20px;
+}
+ 
+/* Una tarjeta individual de ingrediente */
+.tarjeta-ingrediente {
+  background-color: var(--color-principal-claro);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+ 
+/* Nombre del ingrediente en la tarjeta */
+.ingrediente-nombre {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-principal);
+  margin-bottom: 6px;
+}
+ 
+/* Detalles del ingrediente (cantidad, precio, costo) */
+.ingrediente-detalle {
+  font-size: 13px;
+  color: var(--color-texto-suave);
+  margin-bottom: 3px;
+}
+ 
+/* El costo calculado de ese ingrediente (resaltado) */
+.ingrediente-costo {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-texto);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-borde);
+}
+ 
+ 
+/* ------------------------------------------------------------
+   SECCIÓN I: FILAS DE TOTALES
+   ------------------------------------------------------------ */
+ 
+/* Fila con la etiqueta y el valor total (ej: Costo total: $4.50) */
+.fila-total {
+  display: flex;
+  justify-content: space-between;  /* etiqueta a la izquierda, valor a la derecha */
+  align-items: center;
+  padding: 10px 16px;
+  background-color: var(--color-principal-claro);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+ 
+/* Texto de la etiqueta total */
+.etiqueta-total {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+ 
+/* Número resaltado del total */
+.valor-total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-principal);
+}
+ 
+ 
+/* ------------------------------------------------------------
+   SECCIÓN J: CAJAS DE RESULTADO
+   Se muestran después de calcular margen o punto de equilibrio.
+   ------------------------------------------------------------ */
+.caja-resultado {
+  background-color: var(--resultado-fondo);     /* verde muy claro */
+  border: 2px solid var(--resultado-borde);     /* borde verde */
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 16px;
+  text-align: center;
+}
+ 
+/* Título dentro de la caja de resultado */
+.resultado-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--resultado-texto);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+ 
+/* El número grande del resultado */
+.resultado-valor {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--resultado-texto);
+  margin-bottom: 8px;
+}
+ 
+/* La fórmula que explica cómo se calculó */
+.resultado-formula {
+  font-size: 12px;
+  color: var(--resultado-texto);
+  opacity: 0.75;               /* un poco transparente para que no compita con el número */
+  font-style: italic;
+}
+ 
+ 
+/* ------------------------------------------------------------
+   SECCIÓN K: RESUMEN FINAL
+   ------------------------------------------------------------ */
+ 
+/* Separador visual antes del resumen */
+.subtitulo-resumen {
+  color: var(--color-principal);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 28px 0 12px;
+  padding-top: 20px;
+  border-top: 2px solid var(--color-borde);
+}
+ 
+/* Fila dentro del resumen (etiqueta: valor) */
+.fila-resumen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 14px;
+}
+ 
+/* La etiqueta de cada fila del resumen */
+.resumen-etiqueta {
+  color: var(--color-texto-suave);
+}
+ 
+/* El valor de cada fila del resumen */
+.resumen-valor {
+  font-weight: 700;
+  color: var(--color-texto);
 }

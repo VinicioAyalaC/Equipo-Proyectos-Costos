@@ -119,12 +119,129 @@ Empieza OCULTA. Se muestra al pulsar el botón del test.
                   <div id="resultado-test" class="oculto"></div>
 
                   <!-- NUEVO BOTÓN: Para regresar al inicio, empieza oculto -->
-                  <button id="btn-reiniciar" class="boton-principal oculto">
+                  <button id="btn-reiniciar-test" class="boton-principal oculto">
                         Volver a la página inicial
                   </button>
             </main>
       </section>
 
+
+
+<!-- ================================================
+  PANTALLA 4: SIMULADOR DE COSTOS
+  Aquí el usuario selecciona un producto, ve sus
+  ingredientes y calcula costos, margen y equilibrio.
+  Empieza OCULTA (clase "oculto").
+  ================================================ -->
+  <section id="pantalla-simulador" class="oculto">
+ 
+    <header class="barra-superior">      
+        <span class="titulo-seccion">Simulador de Costos</span>   <!-- Barra con el título de la sección-->
+        <button id="btn-volver-portada" class="boton-secundario">← Volver</button> <!--botón de regreso -->
+    </header>
+ 
+    <main> 
+      <!-- PASO 1: Seleccionar el producto a costear -->
+      <div class="bloque-formulario">
+            <label class="etiqueta-campo" for="selector-producto">   <!--for se conecta con el id del mismo nombre-->
+                  Paso 1 · Selecciona un producto:
+            </label>
+    
+            <!-- <select>: menú desplegable. Atributo "value": es el código que lee el JavaScript.-->
+            <select id="selector-producto" class="campo-select">
+                  <option value="">-- Elige un producto --</option>
+                  <option value="pizza">🍕 Pizza Margarita</option>
+                  <option value="hamburguesa">🍔 Hamburguesa Clásica</option>
+                  <option value="pastel">🎂 Pastel de Chocolate</option>
+            </select>
+      </div> <!-- Fin paso 1 -->
+ 
+ 
+      <!-- PASO 2: Ingredientes del producto (se llena con JavaScript) -->
+      <div id="bloque-ingredientes" class="oculto"> 
+            <h2 class="subtitulo-paso">Paso 2 · Ingredientes (materia prima directa)</h2>
+
+            <!-- El JavaScript inyectará las tarjetas de ingredientes. Las tarjetas se generan dinámicamente con un bucle FOR.-->
+            <div id="contenedor-ingredientes"></div>
+    
+            <!-- Totales de la receta -->
+            <div class="fila-total">
+                <span class="etiqueta-total">Costo total de materia prima:</span>                
+                <span id="total-materia-prima" class="valor-total">$0.00</span>  <!-- Lo actualiza JavaScript con el resultado-->
+            </div>
+    
+            <div class="fila-total">
+                <span class="etiqueta-total">Costo por porción:</span>
+                <span id="costo-porcion" class="valor-total">$0.00</span>
+            </div> 
+      </div>   <!-- Fin paso 2 -->
+ 
+ 
+      <!-- PASO 3: Margen de ganancia y precio de venta -->
+      <div id="bloque-margen" class="oculto">
+ 
+            <h2 class="subtitulo-paso">Paso 3 · Margen de ganancia</h2>
+    
+            <div class="bloque-formulario">
+                  <label class="etiqueta-campo" for="input-margen">
+                        Porcentaje de ganancia deseado (%):
+                  </label>
+
+                  <!-- El usuario escribe aquí el % de ganancia (ej: 50) -->
+                  <input  type="number"
+                          id="input-margen"
+                          class="campo-numero"
+                          min="0"
+                          max="500"
+                          placeholder="Ej: 50" >
+            </div>
+    
+            <!-- Resultado del precio de venta -->
+            <div class="caja-resultado" id="resultado-margen">
+                  <p class="resultado-titulo">Precio de venta sugerido</p>
+                  <p id="precio-venta" class="resultado-valor">—</p>
+                  <p class="resultado-formula">Precio = Costo por porción + (Costo × Margen ÷ 100)</p>
+            </div>
+    
+            <button id="btn-calcular-margen" class="boton-principal">Calcular precio de venta</button>    
+      </div> <!-- Fin paso 3 -->
+ 
+ 
+      <!-- PASO 4: Punto de equilibrio -->
+      <div id="bloque-equilibrio" class="oculto">
+ 
+        <h2 class="subtitulo-paso">Paso 4 · Punto de equilibrio</h2>
+ 
+        <div class="bloque-formulario">
+                <label class="etiqueta-campo" for="input-costos-fijos"> Costos fijos mensuales totales ($):</label>
+                <!-- El usuario escribe el total de costos fijos del mes -->
+                <input  type="number"
+                        id="input-costos-fijos"
+                        class="campo-numero"
+                        min="0"
+                        placeholder="Ej: 500">
+        </div>
+ 
+        <!-- Resultado del punto de equilibrio -->
+        <div class="caja-resultado" id="resultado-equilibrio">
+              <p class="resultado-titulo">Unidades mínimas a vender</p>
+              <p id="unidades-equilibrio" class="resultado-valor">—</p>
+              <p class="resultado-formula">Punto Equilibrio = Costos Fijos ÷ (Precio Venta − Costo Unitario)</p>
+        </div>
+ 
+        <button id="btn-calcular-equilibrio" class="boton-principal">Calcular punto de equilibrio</button>
+ 
+        <!-- Resumen final (aparece después de calcular el equilibrio) -->
+        <div id="resumen-final" class="oculto">
+              <h3 class="subtitulo-resumen">Resumen del análisis</h3>              
+              <div id="contenido-resumen"></div>    <!-- JavaScript escribe aquí el resumen completo -->
+              <button id="btn-reiniciar-simulador" class="boton-secundario">🔄 Calcular otro producto</button>
+        </div>
+ 
+      </div><!-- Fin paso 4 -->
+ 
+    </main>
+  </section><!-- Fin pantalla 4 -->
 
 
 
