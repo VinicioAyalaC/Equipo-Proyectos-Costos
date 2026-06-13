@@ -576,3 +576,56 @@ section {
   font-weight: 700;
   color: var(--color-texto);
 }
+
+
+/* ============================================================
+   ESTILOS PARA LA BODEGA VIRTUAL
+   ============================================================ */
+
+/* Contenedor principal que agrupa las tarjetas de la bodega */
+.cuadricula-bodega {
+  display: flex;         /* Permite colocar las tarjetas una al lado de la otra */
+  flex-wrap: wrap;       /* Si no caben en una fila, saltan a la siguiente línea */
+  gap: 12px;             /* Espacio de separación entre cada tarjeta */
+  justify-content: center; /* Centra las tarjetas en la pantalla */
+  margin-top: 15px;      /* Espacio superior */
+  margin-bottom: 20px;   /* Espacio inferior */
+}
+
+/* Tarjeta individual para cada ingrediente en el almacén */
+.tarjeta-bodega {
+  padding: 12px;                /* Espacio interno acolchado */
+  border-radius: 8px;           /* Bordes redondeados */
+  min-width: 140px;             /* Ancho mínimo de cada tarjeta */
+  text-align: center;           /* Alinea los textos al centro */
+  border: 1px solid #cbd5e1;    /* Borde fino gris */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra muy suave para dar relieve */
+  transition: transform 0.2s;   /* Efecto suave si decides animarlo */
+}
+
+/* Título del ingrediente dentro de la tarjeta */
+.tarjeta-bodega p:first-child {
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: #1e293b;               /* Color de texto gris oscuro */
+}
+
+/* Cantidad y unidad (ej: "50000 g") dentro de la tarjeta */
+.tarjeta-bodega p:last-child {
+  margin: 6px 0 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Estilo para el texto de éxito cuando descuentas stock */
+#mensaje-produccion {
+  background-color: #f0fdf4;    /* Fondo verde muy claro */
+  border: 1px solid #bbf7d0;    /* Borde verde */
+  color: #166534;               /* Texto verde oscuro */
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
